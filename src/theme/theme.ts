@@ -1,7 +1,7 @@
 /**
  * Imports other components and hooks.
  */
-import { colors } from "../colors";
+import { colors } from "./colors";
 
 /**
  * Defines the theme.

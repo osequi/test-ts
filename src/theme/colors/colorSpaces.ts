@@ -2,7 +2,7 @@
  * The list of standard color space names supported by chroma.js
  * @see https://gka.github.io/chroma.js/#chroma
  */
-export enum TStandards {
+export enum TStandardColorSpaceNames {
   RGB,
   HSL,
   HSV,
@@ -38,7 +38,7 @@ export type TColorSpace = {
   name: TColorSpaceNames;
   description?: string;
   example?: string;
-  spaceName?: TStandards;
+  spaceName?: TStandardColorSpaceNames;
 };
 
 /**
@@ -67,49 +67,49 @@ export const colorSpaces: TColorSpace[] = [
     name: TColorSpaceNames.RGB,
     description: "An RGB triplet.",
     example: "255, 0, 0",
-    spaceName: TStandards.RGB,
+    spaceName: TStandardColorSpaceNames.RGB,
   },
   {
     name: TColorSpaceNames.HSL,
     description: "An HSL triplet.",
     example: "330, 1, 0.6",
-    spaceName: TStandards.HSL,
+    spaceName: TStandardColorSpaceNames.HSL,
   },
   {
     name: TColorSpaceNames.HSV,
     description: "An HSV triplet.",
     example: "38.82, 1, 1",
-    spaceName: TStandards.HSV,
+    spaceName: TStandardColorSpaceNames.HSV,
   },
   {
     name: TColorSpaceNames.Lab,
     description: "A Lab triplet.",
     example: "74.94, 23.93, 78.95",
-    spaceName: TStandards.Lab,
+    spaceName: TStandardColorSpaceNames.Lab,
   },
   {
     name: TColorSpaceNames.LCH,
     description: "An LCH triplet.",
     example: "79.21, 25.94, 235.11",
-    spaceName: TStandards.LCH,
+    spaceName: TStandardColorSpaceNames.LCH,
   },
   {
     name: TColorSpaceNames.HCL,
     description: "An HCL triplet.",
     example: "235.11, 25.94, 79.21",
-    spaceName: TStandards.HCL,
+    spaceName: TStandardColorSpaceNames.HCL,
   },
   {
     name: TColorSpaceNames.CMYK,
     description: "A CMYK quadruplet.",
     example: "1, 0.5, 0, 0.2",
-    spaceName: TStandards.CMYK,
+    spaceName: TStandardColorSpaceNames.CMYK,
   },
   {
     name: TColorSpaceNames.GL,
     description: "An RGB triplet with GL notation.",
     example: "0.6, 0, 0.8",
-    spaceName: TStandards.RGB,
+    spaceName: TStandardColorSpaceNames.RGB,
   },
   {
     name: TColorSpaceNames.Temperature,

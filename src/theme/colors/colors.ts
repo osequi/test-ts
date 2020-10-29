@@ -4,7 +4,7 @@ import { TColorSpaceNames } from "./colorSpaces";
  * The list of the available color names.
  * This theme uses only these colors to form a palette.
  */
-export enum ColorNames {
+export enum TColorNames {
   Background,
   Text,
   Highlight,
@@ -14,8 +14,8 @@ export enum ColorNames {
 /**
  * The definition of Color.
  */
-export type Color = {
-  name: ColorNames;
+export type TColor = {
+  name: TColorNames;
   description?: string;
   value: string | null;
   space: TColorSpaceNames;
@@ -25,23 +25,23 @@ export type Color = {
 /**
  * The list of available colors.
  */
-export const colors: Color[] = [
+export const colors: TColor[] = [
   {
-    name: ColorNames.Background,
+    name: TColorNames.Background,
     description: "The background color.",
     value: "white",
     space: TColorSpaceNames.Name,
     chroma: null,
   },
   {
-    name: ColorNames.Text,
+    name: TColorNames.Text,
     description: "The text color.",
     value: "black",
     space: TColorSpaceNames.Name,
     chroma: null,
   },
   {
-    name: ColorNames.Highlight,
+    name: TColorNames.Highlight,
     description:
       "The highlight color. Used for links, buttons, call to action elements.",
     value: null,
@@ -49,7 +49,7 @@ export const colors: Color[] = [
     chroma: null,
   },
   {
-    name: ColorNames.Shade,
+    name: TColorNames.Shade,
     description: "The shade color. Used for secondary backgrounds.",
     value: null,
     space: TColorSpaceNames.Name,
