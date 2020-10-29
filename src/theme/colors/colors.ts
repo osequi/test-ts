@@ -1,10 +1,10 @@
-import { ColorSpaceNames } from "./colorSpaces";
+import { TColorSpaceNames } from "./colorSpaces";
 
 /**
  * The list of the available color names.
  * This theme uses only these colors to form a palette.
  */
-enum ColorNames {
+export enum ColorNames {
   Background,
   Text,
   Highlight,
@@ -14,25 +14,45 @@ enum ColorNames {
 /**
  * The definition of Color.
  */
-interface Color {
+export type Color = {
   name: ColorNames;
   description?: string;
-  value: string;
-  space: ColorSpaceNames;
+  value: string | null;
+  space: TColorSpaceNames;
   chroma: object | null;
-}
+};
 
 /**
  * The list of available colors.
  */
-const colors: Color[] = [
+export const colors: Color[] = [
   {
     name: ColorNames.Background,
-    description: "The background color",
+    description: "The background color.",
     value: "white",
-    space: ColorSpaceNames.Name,
+    space: TColorSpaceNames.Name,
+    chroma: null,
+  },
+  {
+    name: ColorNames.Text,
+    description: "The text color.",
+    value: "black",
+    space: TColorSpaceNames.Name,
+    chroma: null,
+  },
+  {
+    name: ColorNames.Highlight,
+    description:
+      "The highlight color. Used for links, buttons, call to action elements.",
+    value: null,
+    space: TColorSpaceNames.Name,
+    chroma: null,
+  },
+  {
+    name: ColorNames.Shade,
+    description: "The shade color. Used for secondary backgrounds.",
+    value: null,
+    space: TColorSpaceNames.Name,
     chroma: null,
   },
 ];
-
-export { colors };
