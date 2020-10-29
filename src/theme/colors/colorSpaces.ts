@@ -44,7 +44,7 @@ interface ColorSpace {
 /**
  * The list of available Color Spaces.
  */
-const ColorsSpaces: ColorSpace[] = [
+const ColorSpaces: ColorSpace[] = [
   {
     name: ColorSpaceNames.Name,
     description: "Named colors from the W3CX11 specification.",
@@ -120,4 +120,4 @@ const ColorsSpaces: ColorSpace[] = [
   },
 ];
 
-export { ColorsSpaces };
+export { ColorSpaces, ColorSpaceNames };
