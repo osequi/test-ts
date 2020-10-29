@@ -5,7 +5,12 @@ import theme from "../src/theme/";
 const ThemeContext = createContext(null);
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  return <ThemeContext.Provider value={theme}><Component {...pageProps} /></ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={theme}>
+      <Component {...pageProps} />
+    </ThemeContext.Provider>
+  );
 };
 
 export default MyApp;
+export { ThemeContext };

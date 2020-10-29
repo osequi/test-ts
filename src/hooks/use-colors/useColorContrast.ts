@@ -30,4 +30,4 @@ const useColorContrast = (
   return calculateContrast(color1, color2);
 };
 
-export { calculateContrast };
+export { calculateContrast, useColorContrast };
