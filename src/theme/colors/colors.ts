@@ -16,10 +16,10 @@ export enum TColorNames {
  * The definition of Color.
  */
 export type TColor = {
-  name: TColorNames;
+  name?: TColorNames;
   description?: string;
-  value: string | null;
-  spaceName: TColorSpaceNames;
+  value?: string | null;
+  spaceName?: TColorSpaceNames;
   chroma: chroma.Color | null;
 };
 
