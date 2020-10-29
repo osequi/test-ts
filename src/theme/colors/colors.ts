@@ -1,4 +1,4 @@
-import { ColorSpaces, ColorSpaceNames } from "./colorSpaces";
+import { ColorSpaceNames } from "./colorSpaces";
 
 /**
  * The list of the available color names.
@@ -18,8 +18,8 @@ interface Color {
   name: ColorNames;
   description?: string;
   value: string;
-  space: typeof ColorSpaces;
-  chroma: any;
+  space: ColorSpaceNames;
+  chroma: object | null;
 }
 
 /**
@@ -30,7 +30,8 @@ const colors: Color[] = [
     name: ColorNames.Background,
     description: "The background color",
     value: "white",
-    space: ColorSpaces.find((item) => item.name === ColorSpaceNames.Name),
+    space: ColorSpaceNames.Name,
+    chroma: null,
   },
 ];
 

@@ -88,7 +88,7 @@ const ColorSpaces: ColorSpace[] = [
     spaceName: Standards.Lab,
   },
   {
-    name: ColorSpaceNames.LCH
+    name: ColorSpaceNames.LCH,
     description: "An LCH triplet.",
     example: "79.21, 25.94, 235.11",
     spaceName: Standards.LCH,
