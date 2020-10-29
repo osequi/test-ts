@@ -3,15 +3,10 @@ import { TColor } from "../../theme";
 import { useColorContrast } from "./";
 
 /**
- * Defines the two ends of the color spectrum: white and black.
- * They give the highest contrast possible for a color.
- * If the contrast is not enough (AA, AAA) the color has to be changed.
- * No way a better contrast can bie achieved to another color.
- */
-type colorSpectrumEndpoints = "white" | "black";
-
-/**
  * Calculates the maximum contrast a color can have.
+ * The maximum contrast is the contrast to the farest end of the spectrum: either to white or to black.
+ * If the contrast is not enough (AA, AAA) the color can't be used for typography. It has to be changed.
+ * No way a better contrast can be achieved to another color than to white or black.
  */
 const useMaximumContrast = (
   color: TColor
