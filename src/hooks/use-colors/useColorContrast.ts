@@ -11,7 +11,10 @@ const calculateContrast = (
   color1: TColor,
   color2: TColor
 ): [contrast: number, aa: boolean, aaa: boolean] => {
-  const contrast = useColorValue(chroma.contrast(color1, color2), 2);
+  const { chroma: chroma1 } = color1;
+  const { chroma: chroma2 } = color2;
+
+  const contrast = useColorValue(chroma.contrast(chroma1, chroma2), 2);
   const aa = contrast > 4.1;
   const aaa = contrast > 7;
 

@@ -1,3 +1,4 @@
+import chroma from "chroma-js";
 import { TColorSpaceNames } from "./colorSpaces";
 
 /**
@@ -19,7 +20,7 @@ export type TColor = {
   description?: string;
   value: string | null;
   space: TColorSpaceNames;
-  chroma: object | null;
+  chroma: chroma.Color | null;
 };
 
 /**
