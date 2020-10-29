@@ -1,1 +1,2 @@
-export { default as useTheme } from "./use-theme";
+export { useTheme } from "./use-theme";
+export { useColorContrast, useColorValue } from "./use-colors";
