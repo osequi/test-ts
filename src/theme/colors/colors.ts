@@ -2,10 +2,9 @@ import chroma from "chroma-js";
 import { TColorSpaceNames } from "./colorSpaces";
 
 /**
- * The list of the available color names.
- * This theme uses only these colors to form a palette.
+ * The list of color names required to form a palette.
  */
-export enum TColorNames {
+export enum TColorNamesForThePalette {
   Background,
   Text,
   Highlight,
@@ -16,7 +15,8 @@ export enum TColorNames {
  * The definition of Color.
  */
 export type TColor = {
-  name?: TColorNames;
+  name?: string;
+  for?: TColorNamesForThePalette;
   description?: string;
   value?: string | null;
   spaceName?: TColorSpaceNames;
@@ -28,21 +28,24 @@ export type TColor = {
  */
 export const colors: TColor[] = [
   {
-    name: TColorNames.Background,
+    name: "White",
+    for: TColorNamesForThePalette.Background,
     description: "The background color.",
     value: "white",
     spaceName: "Name",
     chroma: null,
   },
   {
-    name: TColorNames.Text,
+    name: "Black",
+    for: TColorNamesForThePalette.Text,
     description: "The text color.",
     value: "black",
     spaceName: "Name",
     chroma: null,
   },
   {
-    name: TColorNames.Highlight,
+    name: "Undefined",
+    for: TColorNamesForThePalette.Highlight,
     description:
       "The highlight color. Used for links, buttons, call to action elements.",
     value: null,
@@ -50,7 +53,8 @@ export const colors: TColor[] = [
     chroma: null,
   },
   {
-    name: TColorNames.Shade,
+    name: "Undefined",
+    for: TColorNamesForThePalette.Shade,
     description: "The shade color. Used for secondary backgrounds.",
     value: null,
     spaceName: "Name",
