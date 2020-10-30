@@ -2,16 +2,14 @@
  * Imports other components and hooks.
  */
 import { colors } from "./colors";
+import { breakpoints } from "./breakpoints";
 
 /**
  * Defines the theme.
  */
 const theme = {
   colors: colors,
-  /**
-   * Always leave room for later customization.
-   */
-  custom: {},
+  breakpoints: breakpoints,
 };
 
 export default theme;
