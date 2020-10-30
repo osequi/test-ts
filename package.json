@@ -10,6 +10,7 @@
   "dependencies": {
     "@types/lodash": "^4.14.163",
     "chroma-js": "^2.1.0",
+    "emotion": "^10.0.27",
     "lodash": "^4.17.20",
     "next": "9.5.3",
     "react": "16.13.1",
