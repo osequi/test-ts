@@ -1,10 +1,4 @@
-/**
- * Defines the typographic grid type.
- */
-export type TTypographicGrid = {
-  fontSizes: number[];
-  lineHeight: number;
-};
+import type { TTypographicGrid } from "./";
 
 /**
  * Defines the available scales.

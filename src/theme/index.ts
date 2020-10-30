@@ -1,3 +1,5 @@
+export type { TTypographicGrid } from "./typography";
+
 export type {
   TColor,
   TStandardColorSpaceNames,
