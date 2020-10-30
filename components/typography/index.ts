@@ -1,1 +1,2 @@
-export { default as Setup } from "./Setup/Setup";
+export { Setup } from "./Setup";
+export { Text } from "./Text";

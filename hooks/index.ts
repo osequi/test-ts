@@ -9,3 +9,4 @@ export {
   useResponsiveFontSizes,
   useTypographicGrid,
 } from "./use-typography";
+export { useFindInArrays } from "./use-find-in-arrays";
