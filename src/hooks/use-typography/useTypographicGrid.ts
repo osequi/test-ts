@@ -1,15 +1,20 @@
-import type { TTypographicGrid } from "../../theme";
-import { useLem } from "./";
-
-export type TResponseTypes = "css" | "jss";
+import type { TTypographicGrid, TCssNotation, TBreakpoint } from "../../theme";
+import { useLem, useResponsiveFontSizes } from "./";
 
 const useTypographicGrid = (
   grid: TTypographicGrid,
-  responseType: TResponseTypes
+  breakpoints: TBreakpoint[],
+  notation: TCssNotation
 ): string | object => {
   const { fontSizes, lineHeight } = grid;
   const fontSize = fontSizes[0];
+
   const lem = useLem(grid);
+  const responsiveFontSizes = useResponsiveFontSizes(
+    grid,
+    breakpoints,
+    notation
+  );
 
   const css = `
   	body {
@@ -17,20 +22,21 @@ const useTypographicGrid = (
 	  line-height: ${lineHeight};
 	  --lem: ${lem}em;
 	}
+	${responsiveFontSizes}
   `;
 
   const jss = {
-    body: {
-      fontSize: `${fontSize}%`,
-      lineHeight: lineHeight,
-      "--lem": `${lem}em`,
-    },
+    fontSize: `${fontSize}%`,
+    lineHeight: lineHeight,
+    "--lem": `${lem}em`,
+    // NOTE: This has to be fixed for CRA
+    // ...responsiveFontSizes,
   };
 
-  switch (responseType) {
-    case "css":
+  switch (notation) {
+    case "string":
       return css;
-    case "jss":
+    case "object":
       return jss;
   }
 };
