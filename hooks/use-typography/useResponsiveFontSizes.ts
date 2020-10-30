@@ -11,11 +11,13 @@ const useResponsiveFontSizes = (
 ): string | object => {
   const { fontSizes } = grid;
 
+  const fontSizesWithoutTheDefaultFontSize = fontSizes.slice(1);
+
   switch (notation) {
     case "string":
       return (
-        fontSizes &&
-        fontSizes.reduce((result, item, index) => {
+        fontSizesWithoutTheDefaultFontSize &&
+        fontSizesWithoutTheDefaultFontSize.reduce((result, item, index) => {
           const breakpoint = breakpoints[index];
           const query = useBreakpoint(breakpoint.name, breakpoints);
           return `${result} ${query} {body {font-size: ${item}%;}}`;
@@ -24,8 +26,8 @@ const useResponsiveFontSizes = (
     case "object":
       let responsiveSizes = [];
       return (
-        fontSizes &&
-        fontSizes.map((item, index) => {
+        fontSizesWithoutTheDefaultFontSize &&
+        fontSizesWithoutTheDefaultFontSize.map((item, index) => {
           const breakpoint = breakpoints[index];
           const query = useBreakpoint(breakpoint.name, breakpoints);
           responsiveSizes[`${query}`] = { fontSize: `${item}%` };
