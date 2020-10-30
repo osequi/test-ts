@@ -4,12 +4,11 @@ import { TColorSpaceNames } from "./colorSpaces";
 /**
  * The list of color names required to form a palette.
  */
-export enum TColorNamesForThePalette {
-  Background,
-  Text,
-  Highlight,
-  Shade,
-}
+export type TColorNamesForThePalette =
+  | "Background"
+  | "Text"
+  | "Highlight"
+  | "Shade";
 
 /**
  * The definition of Color.
@@ -24,28 +23,28 @@ export type TColor = {
 };
 
 /**
- * The list of available colors.
+ * The default colors.
  */
 export const colors: TColor[] = [
   {
     name: "White",
-    for: TColorNamesForThePalette.Background,
+    for: "Background",
     description: "The background color.",
     value: "white",
     spaceName: "Name",
-    chroma: null,
+    chroma: chroma("white"),
   },
   {
     name: "Black",
-    for: TColorNamesForThePalette.Text,
+    for: "Text",
     description: "The text color.",
     value: "black",
     spaceName: "Name",
-    chroma: null,
+    chroma: chroma("black"),
   },
   {
     name: "Undefined",
-    for: TColorNamesForThePalette.Highlight,
+    for: "Highlight",
     description:
       "The highlight color. Used for links, buttons, call to action elements.",
     value: null,
@@ -54,7 +53,7 @@ export const colors: TColor[] = [
   },
   {
     name: "Undefined",
-    for: TColorNamesForThePalette.Shade,
+    for: "Shade",
     description: "The shade color. Used for secondary backgrounds.",
     value: null,
     spaceName: "Name",
