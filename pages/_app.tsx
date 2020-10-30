@@ -1,6 +1,6 @@
 import React, { createContext } from "react";
 import type { AppProps } from "next/app";
-import theme from "../src/theme/";
+import theme from "../theme/";
 
 const ThemeContext = createContext(null);
 
