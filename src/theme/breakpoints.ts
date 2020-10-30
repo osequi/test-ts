@@ -12,7 +12,7 @@ export type TBreakpoint = {
 };
 
 /**
- * Defines the breakpoints.
+ * Defines the default breakpoints.
  */
 export const breakpoints: TBreakpoint[] = [
   { name: "mobile", value: 320 },

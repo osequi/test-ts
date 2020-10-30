@@ -1,8 +1,9 @@
 /**
  * Imports other components and hooks.
  */
-import { colors } from "./colors";
-import { breakpoints } from "./breakpoints";
+import { colors, TColor } from "./colors";
+import { breakpoints, TBreakpoint } from "./breakpoints";
+import { typography, TTypography } from "./typography";
 
 /**
  * Defines the CSS writing styles.
@@ -13,11 +14,21 @@ import { breakpoints } from "./breakpoints";
 export type TCssNotation = "string" | "object";
 
 /**
+ * Defines the theme shape.
+ */
+export type TTheme = {
+  colors: TColor[];
+  breakpoints: TBreakpoint[];
+  typography: TTypography;
+};
+
+/**
  * Defines the theme.
  */
 const theme = {
   colors: colors,
   breakpoints: breakpoints,
+  typography: typography,
 };
 
 export default theme;
