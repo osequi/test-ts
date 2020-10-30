@@ -3,6 +3,8 @@ export type { TTypographicGrid } from "./typography";
 export type { TBreakpoint, TBreakpointNames } from "./breakpoints";
 export { breakpoints } from "./breakpoints";
 
+export type { TFont } from "./typography/fonts";
+
 export type {
   TColor,
   TStandardColorSpaceNames,
