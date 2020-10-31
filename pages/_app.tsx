@@ -10,7 +10,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeContext.Provider value={theme}>
       <Setup />
-      <Text variant="default">
+      <Text variant="body">
         <Component {...pageProps} />
       </Text>
     </ThemeContext.Provider>

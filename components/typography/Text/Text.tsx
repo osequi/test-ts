@@ -1,18 +1,11 @@
-import {
-  FC,
-  ComponentClass,
-  ReactNode,
-  Component,
-  HTMLProps,
-  createElement,
-} from "react";
+import { FC, ComponentClass, HTMLProps, createElement } from "react";
 import { cx } from "emotion";
 import { startCase } from "lodash";
 
 /**
  * Imports other components ans hooks.
  */
-import { useStyles, useTheme, useFindInArrays, useFont } from "../../../hooks";
+import { useStyles, useTheme, useFont, useMaxWidth } from "../../../hooks";
 
 /**
  * Defines the text types.
@@ -25,7 +18,7 @@ export type TTextVariants = "default" | "body" | "longform" | "title";
 export type TText = {
   variant: TTextVariants;
   as?: FC | ComponentClass | string;
-  children?: ReactNode[] | Component[] | any[];
+  children?: any | any[];
 };
 
 /**
@@ -44,24 +37,58 @@ const defaultText = (props: { defaultFont: object }) => ({
   ...props.defaultFont,
 });
 
+const bodyText = (props: { defaultFont: object; maxWidth: object }) => ({
+  ...props.defaultFont,
+  ...props.maxWidth,
+});
+
 /**
  * Displays content inside a Text container.
  */
 const Text = (props: TText) => {
   const { variant, as, children } = props;
 
+  /**
+   * Loads theme data.
+   */
   const theme = useTheme();
+
   const {
     typography: { fonts },
   } = theme;
+
   const defaultFont = useFont("Default", fonts);
+  const maxWidth = useMaxWidth();
 
-  const { defaultTextKlass } = useStyles([defaultText], {
-    defaultFont: defaultFont,
-  });
+  console.log("maxWidth:", maxWidth);
 
+  /**
+   * Loads styles.
+   */
+  const { defaultTextKlass, bodyTextKlass } = useStyles(
+    [defaultText, bodyText],
+    {
+      defaultFont: defaultFont,
+      maxWidth: maxWidth,
+    }
+  );
+
+  /**
+   * Matches styles with the variants.
+   */
+  let klass = null;
+  switch (variant) {
+    case "default":
+      klass = defaultTextKlass;
+    case "body":
+      klass = bodyTextKlass;
+  }
+
+  /**
+   * Prepares the props for the new element.
+   */
   const props2: HTMLProps<any> = {
-    className: cx(defaultTextKlass, `Text${startCase(variant)}`),
+    className: cx(klass, `Text${startCase(variant)}`),
   };
 
   return createElement(as, props2, children);
