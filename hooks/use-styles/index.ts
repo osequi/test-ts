@@ -1,1 +1,1 @@
-export { default as useStyles } from "./useStyles.js";
+export { default as useStyles } from "./useStyles";

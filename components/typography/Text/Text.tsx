@@ -1,4 +1,4 @@
-import React, { FC, createElement } from "react";
+import { ReactNode, Component, createElement } from "react";
 import { cx } from "emotion";
 import { startCase } from "lodash";
 
@@ -17,8 +17,8 @@ export type TTextVariants = "default" | "body" | "longform" | "title";
  */
 export type TText = {
   variant: TTextVariants;
-  as?: FC | string;
-  children?: any;
+  as?: ReactNode | Component | string;
+  children?: ReactNode[] | Component[] | any[];
 };
 
 /**
@@ -33,7 +33,7 @@ const defaultProps: TText = {
 /**
  * Defines the styles.
  */
-const defaultText = (props) => ({
+const defaultText = (props: object) => ({
   ...props.font,
 });
 

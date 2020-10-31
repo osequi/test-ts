@@ -5,16 +5,7 @@ import { camelCase } from "lodash";
  * Transforms CSS style functions, and, style objects with labels, into classNames for Emotion.
  * Example: `const { styleFunctionKlass, styleObjectWithLabelKlass } = useStyles([styleFunction, styleObjectWithLabel], props, theme)`
  */
-const useStyles = (...args) => {
-  /**
-   * Falls back silently when there are not enough arguments.
-   * // NOTE: When `null` used an error is triggered when the args are not all set.
-   * // NOTE: `const styleFunction = (theme) => {}` won't work, only `(props, theme)`
-   */
-  const styles = args[0] ? args[0] : [];
-  const props = args[1] ? args[1] : {};
-  const theme = args[2] ? args[2] : {};
-
+const useStyles = (styles = [], props = {}) => {
   return (
     styles &&
     styles.reduce((result, item) => {
@@ -44,7 +35,7 @@ const useStyles = (...args) => {
       /**
        * Returns value both for style functions and objects.
        */
-      const value = isFunction ? css(item(props, theme)) : css(item);
+      const value = isFunction ? css(item(props)) : css(item);
       return { ...result, [`${name}`]: value };
     }, {})
   );
