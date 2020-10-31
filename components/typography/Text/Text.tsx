@@ -11,6 +11,7 @@ import {
   useFont,
   useMaxWidth,
   useScale,
+  useSpacing,
 } from "../../../hooks";
 
 /**
@@ -48,10 +49,12 @@ const bodyText = (props: {
   defaultFont: object;
   defaultScale: object;
   maxWidth: object;
+  adjacentSpacing: object;
 }) => ({
   ...props.defaultFont,
   ...props.defaultScale,
   ...props.maxWidth,
+  ...props.adjacentSpacing,
 });
 
 /**
@@ -77,6 +80,7 @@ const Text = (props: TText) => {
   const defaultFont = useFont("Default", fonts);
   const defaultScale = useScale(0, preset);
   const maxWidth = useMaxWidth();
+  const adjacentSpacing = useSpacing("Adjacent siblings margin top");
 
   /**
    * Loads styles.
@@ -87,6 +91,7 @@ const Text = (props: TText) => {
       defaultFont: defaultFont,
       defaultScale: defaultScale,
       maxWidth: maxWidth,
+      adjacentSpacing: adjacentSpacing,
     }
   );
 

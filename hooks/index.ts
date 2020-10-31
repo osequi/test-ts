@@ -11,3 +11,4 @@ export {
 } from "./use-typography";
 export { useFindInArrays } from "./use-find-in-arrays";
 export { useScale } from "./use-scale";
+export { useSpacing } from "./use-spacing";
