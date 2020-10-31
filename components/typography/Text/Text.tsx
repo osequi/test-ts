@@ -40,8 +40,8 @@ const defaultProps: TText = {
 /**
  * Defines the styles.
  */
-const defaultText = (props) => ({
-  ...props.font,
+const defaultText = (props: { defaultFont: object }) => ({
+  ...props.defaultFont,
 });
 
 /**
@@ -54,9 +54,11 @@ const Text = (props: TText) => {
   const {
     typography: { fonts },
   } = theme;
-  const font = useFont("Default", fonts);
+  const defaultFont = useFont("Default", fonts);
 
-  const { defaultTextKlass } = useStyles([defaultText], { font: font });
+  const { defaultTextKlass } = useStyles([defaultText], {
+    defaultFont: defaultFont,
+  });
 
   const props2: HTMLProps<any> = {
     className: cx(defaultTextKlass, `Text${startCase(variant)}`),
