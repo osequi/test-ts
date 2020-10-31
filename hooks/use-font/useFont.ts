@@ -1,10 +1,10 @@
-import type { TFont } from "../../theme";
+import type { TFont, TFontNames } from "../../theme";
 
 /**
  * Returns a font style object identified by name.
  * @example font('Nimbus Sans Medium') => { fontFamily: "nimbus-sans", fontWeight: 500, fontStyle: "normal"}
  */
-const useFont = (name: string, fonts: TFont[]): object => {
+const useFont = (name: TFontNames, fonts: TFont[]): object => {
   const { name: fontName, ...rest } = fonts.find((item) => item.name === name);
 
   /**

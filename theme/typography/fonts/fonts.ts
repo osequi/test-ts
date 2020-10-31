@@ -6,10 +6,15 @@
 //import "./fonts.css";
 
 /**
+ * Defines the available font names.
+ */
+export type TFontNames = "Default";
+
+/**
  * Defines the font type.
  */
 export type TFont = {
-  name: string;
+  name: TFontNames;
   fontFamily: string;
   fontWeight: string | number;
   fontStyle: string;
@@ -20,7 +25,7 @@ export type TFont = {
  * Defines the default font.
  * The default font is the browsers default font.
  */
-export const font = {
+export const defaultFont = {
   name: "Default",
   fontFamily: "inherit",
   fontWeight: "normal",

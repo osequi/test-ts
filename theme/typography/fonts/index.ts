@@ -1,2 +1,2 @@
-export type { TFont } from "./fonts";
-export { font } from "./fonts";
+export type { TFont, TFontNames } from "./fonts";
+export { defaultFont } from "./fonts";

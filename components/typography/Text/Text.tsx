@@ -52,15 +52,15 @@ const Text = (props: TText) => {
    * Loads theme data.
    */
   const theme = useTheme();
-
   const {
     typography: { fonts },
   } = theme;
 
+  /**
+   * Prepares data.
+   */
   const defaultFont = useFont("Default", fonts);
   const maxWidth = useMaxWidth();
-
-  console.log("maxWidth:", maxWidth);
 
   /**
    * Loads styles.

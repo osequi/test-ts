@@ -1,5 +1,5 @@
 import type { TTypographicGrid, TTypographicScale, TFont } from "./";
-import { typographicGrid, typographicScale, font } from "./";
+import { defaultFont } from "./";
 
 /**
  * Defines the typography type.
@@ -14,7 +14,7 @@ export type TTypography = {
  * Defines the default typography settings.
  */
 export const typography = {
-  grid: typographicGrid,
-  scale: typographicScale,
-  fonts: [font],
+  grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
+  scale: { preset: "linear" },
+  fonts: [defaultFont],
 };
