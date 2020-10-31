@@ -5,7 +5,13 @@ import { startCase } from "lodash";
 /**
  * Imports other components ans hooks.
  */
-import { useStyles, useTheme, useFont, useMaxWidth } from "../../../hooks";
+import {
+  useStyles,
+  useTheme,
+  useFont,
+  useMaxWidth,
+  useScale,
+} from "../../../hooks";
 
 /**
  * Defines the text types.
@@ -33,12 +39,18 @@ const defaultProps: TText = {
 /**
  * Defines the styles.
  */
-const defaultText = (props: { defaultFont: object }) => ({
+const defaultText = (props: { defaultFont: object; defaultScale: object }) => ({
   ...props.defaultFont,
+  ...props.defaultScale,
 });
 
-const bodyText = (props: { defaultFont: object; maxWidth: object }) => ({
+const bodyText = (props: {
+  defaultFont: object;
+  defaultScale: object;
+  maxWidth: object;
+}) => ({
   ...props.defaultFont,
+  ...props.defaultScale,
   ...props.maxWidth,
 });
 
@@ -53,13 +65,17 @@ const Text = (props: TText) => {
    */
   const theme = useTheme();
   const {
-    typography: { fonts },
+    typography: {
+      fonts,
+      scale: { preset },
+    },
   } = theme;
 
   /**
    * Prepares data.
    */
   const defaultFont = useFont("Default", fonts);
+  const defaultScale = useScale(0, preset);
   const maxWidth = useMaxWidth();
 
   /**
@@ -69,6 +85,7 @@ const Text = (props: TText) => {
     [defaultText, bodyText],
     {
       defaultFont: defaultFont,
+      defaultScale: defaultScale,
       maxWidth: maxWidth,
     }
   );

@@ -1,9 +1,15 @@
-export type { TTypographicGrid } from "./typography";
+export type {
+  TTypographicGrid,
+  TFont,
+  TFontNames,
+  TTypographicScaleNames,
+  TTypographicScaleSettings,
+  TTypographicScaleSettingsForLinear,
+  TTypographicScaleSettingsForModular,
+} from "./typography";
 
 export type { TBreakpoint, TBreakpointNames } from "./breakpoints";
 export { breakpoints } from "./breakpoints";
-
-export type { TFont, TFontNames } from "./typography/fonts";
 
 export type {
   TColor,

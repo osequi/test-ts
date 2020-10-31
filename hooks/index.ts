@@ -10,3 +10,4 @@ export {
   useTypographicGrid,
 } from "./use-typography";
 export { useFindInArrays } from "./use-find-in-arrays";
+export { useScale } from "./use-scale";

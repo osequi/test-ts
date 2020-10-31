@@ -1,5 +1,11 @@
 export type { TTypographicGrid } from "./grid";
-export type { TTypographicScales, TTypographicScale } from "./scale";
+export type {
+  TTypographicScaleNames,
+  TTypographicScale,
+  TTypographicScaleSettings,
+  TTypographicScaleSettingsForLinear,
+  TTypographicScaleSettingsForModular,
+} from "./scale";
 export type { TTypography } from "./typography";
 export type { TFont, TFontNames } from "./fonts";
 
