@@ -34,8 +34,6 @@ const modularScaleValue = (
     ? theme.typography.scale.settings
     : defaultProps;
 
-  console.log("settings2:", settings2);
-
   return ms(value, settings2);
 };
 

@@ -16,17 +16,22 @@ export type TScaleSettings = TLinearScaleSettings & TModularScaleSettings;
  */
 export type TScale = {
   preset: TScaleNames;
-  settings: TScaleSettings;
+  settings?: TScaleSettings;
+};
+
+/**
+ * Defines the scale value type.
+ */
+export type TScaleValue = TScale & {
+  value: number;
 };
 
 /**
  * Returns a value from a scale.
  */
-const scaleValue = (
-  value: number,
-  preset: TScaleNames,
-  settings?: TScaleSettings
-): number => {
+const scaleValue = (scale: TScaleValue): number => {
+  const { value, preset, settings } = scale;
+
   switch (preset) {
     case "linear":
       return linearScaleValue(value, settings);
@@ -37,13 +42,16 @@ const scaleValue = (
 
 /**
  * Resizes the font to a value on a scale.
+ * @example useScale({ value: 1, preset: "modular" }) => {fontSize: ....}
+ * @example useScale([{ value: 1, preset: "modular" },{ value: 1, preset: "linear" }]) => [{fontSize: ...}, {fontSize: ...}]
  */
-const useScale = (
-  value: number,
-  preset: TScaleNames,
-  settings?: TScaleSettings
-): object => {
-  return { fontSize: `${scaleValue(value, preset, settings)}em` };
+const useScale = (scales?: TScaleValue[] | TScaleValue): object[] | object => {
+  return Array.isArray(scales)
+    ? scales &&
+        scales.reduce((result, scale) => {
+          return [...result, { fontSize: `${scaleValue(scale)}em` }];
+        }, [])
+    : { fontSize: `${scaleValue(scales)}em` };
 };
 
 export default useScale;

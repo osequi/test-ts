@@ -69,7 +69,7 @@ const Text = (props: TText) => {
    * Prepares data.
    */
   const nimbusRegular = useFont("Nimbus Sans Regular");
-  const defaultScale = useScale(1, "modular");
+  const defaultScale = useScale({ value: 1, preset: "linear" });
   const maxWidth = useMaxWidth();
   const adjacentSpacing = useSpacing("Adjacent siblings margin top");
 
