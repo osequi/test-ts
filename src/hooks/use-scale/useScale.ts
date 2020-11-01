@@ -1,53 +1,23 @@
-import type {
-  TTypographicScaleNames,
-  TTypographicScaleSettings,
-  TTypographicScaleSettingsForLinear,
-  TTypographicScaleSettingsForModular,
-} from "../../theme";
-
-import { useTheme } from "../";
+import type { TLinearScaleSettings, TModularScaleSettings } from "./";
+import { linearScaleValue, modularScaleValue } from "./";
 
 /**
- * Returns a value from the linear scale.
- * The returned value is responsive, ie. follows the responsive font-sizes applied to the body.
- * @example linearScaleValue(2, {lineHeight: 1}) => 3 * 1.25 = 3.75em (the value of the 0 scale is 1em)
+ * Defines the available scales.
  */
-const linearScaleValue = (
-  value: number,
-  settings?: TTypographicScaleSettingsForLinear
-): number => {
-  const theme = useTheme();
-
-  const {
-    typography: {
-      grid: { lineHeight: lineHeightFromTheme },
-    },
-  } = theme;
-
-  const lineHeightFromSettings = settings
-    ? settings.lineHeight
-    : lineHeightFromTheme;
-
-  const newLineHeight = lineHeightFromTheme / lineHeightFromSettings;
-
-  return (value + 1) * newLineHeight;
-};
+export type TScaleNames = "linear" | "modular";
 
 /**
- * Returns a value from the modular scale.
+ * Defines the available scale settings.
  */
-const modularScaleValue = (
-  value: number,
-  settings?: TTypographicScaleSettingsForModular
-): number => {};
+export type TScaleSettings = TLinearScaleSettings & TModularScaleSettings;
 
 /**
  * Returns a value from a scale.
  */
 const scaleValue = (
   value: number,
-  preset?: TTypographicScaleNames,
-  settings?: TTypographicScaleSettings
+  preset: TScaleNames,
+  settings?: TScaleSettings
 ): number => {
   switch (preset) {
     case "linear":
@@ -62,8 +32,8 @@ const scaleValue = (
  */
 const useScale = (
   value: number,
-  preset?: TTypographicScaleNames,
-  settings?: TTypographicScaleSettings
+  preset: TScaleNames,
+  settings?: TScaleSettings
 ): object => {
   return { fontSize: `${scaleValue(value, preset, settings)}em` };
 };

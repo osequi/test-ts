@@ -1,12 +1,4 @@
-export type {
-  TTypographicGrid,
-  TFont,
-  TFontNames,
-  TTypographicScaleNames,
-  TTypographicScaleSettings,
-  TTypographicScaleSettingsForLinear,
-  TTypographicScaleSettingsForModular,
-} from "./typography";
+export type { TTypographicGrid, TFont, TFontNames } from "./typography";
 export { typography } from "./typography";
 
 export type { TBreakpoint, TBreakpointNames } from "./breakpoints";
