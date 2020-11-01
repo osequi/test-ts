@@ -7,7 +7,7 @@ import { startCase } from "lodash";
  */
 import {
   useStyles,
-  useFonts,
+  useFont,
   useMaxWidth,
   useScale,
   useSpacing,
@@ -68,7 +68,7 @@ const Text = (props: TText) => {
   /**
    * Prepares data.
    */
-  const [nimbusRegular] = useFonts(["Nimbus Sans Regular"]);
+  const nimbusRegular = useFont("Nimbus Sans Regular");
   const defaultScale = useScale(0, "linear");
   const maxWidth = useMaxWidth();
   const adjacentSpacing = useSpacing("Adjacent siblings margin top");

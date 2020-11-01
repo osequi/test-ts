@@ -1,11 +1,4 @@
 /**
- * Imports fonts.
- * Only for CRA.
- * CNA imports them in `_app.tsx`
- */
-//import "./fonts.css";
-
-/**
  * Defines the available font names.
  */
 export type TFontNames = "Default" | "Nimbus Sans Regular";
@@ -14,7 +7,7 @@ export type TFontNames = "Default" | "Nimbus Sans Regular";
  * Defines the font type.
  */
 export type TFont = {
-  name: TFontNames;
+  name?: TFontNames;
   fontFamily: string;
   fontWeight: string | number;
   fontStyle: string;
