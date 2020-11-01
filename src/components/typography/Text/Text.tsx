@@ -11,6 +11,7 @@ import {
   useMaxWidth,
   useScale,
   useSpacing,
+  useHeadings,
 } from "../../../hooks";
 
 /**
@@ -42,9 +43,11 @@ const defaultProps: TText = {
 const defaultText = (props: {
   nimbusRegular: object;
   defaultScale: object;
+  sameSizeHeadings: object;
 }): object => ({
   ...props.nimbusRegular,
   ...props.defaultScale,
+  ...props.sameSizeHeadings,
 });
 
 const bodyText = (props: {
@@ -72,6 +75,11 @@ const Text = (props: TText) => {
   const defaultScale = useScale({ value: 1, preset: "linear" });
   const maxWidth = useMaxWidth();
   const adjacentSpacing = useSpacing("Adjacent siblings margin top");
+  const sameSizeHeadings = useHeadings("sameSize", {
+    font: "Nimbus Sans Regular",
+    lineHeight: 1,
+    scale: 3,
+  });
 
   /**
    * Loads styles.
@@ -81,6 +89,7 @@ const Text = (props: TText) => {
     defaultScale: defaultScale,
     maxWidth: maxWidth,
     adjacentSpacing: adjacentSpacing,
+    sameSizeHeadings: sameSizeHeadings,
   });
 
   /**

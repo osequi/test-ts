@@ -1,8 +1,14 @@
 import type { TFontNames } from "../../theme";
-import { useFont, useScale } from "../";
+import { sameSize, differentSizes } from "./presets";
 
+/**
+ * Defines the available presets for headings.
+ */
 export type THeadingsPresetNames = "sameSize" | "differentSizes";
 
+/**
+ * Defines the headings settings type.
+ */
 export type THeadingsSettings = {
   font?: TFontNames;
   lineHeight?: number;
@@ -10,37 +16,17 @@ export type THeadingsSettings = {
 };
 
 /**
- * Returns headings with the same size.
+ * Resizes and styles headings according to a preset.
  */
-const sameSizeHeadings = (settings: THeadingsSettings): object => {
-  const { font, lineHeight, scale } = settings;
-
-  const [font2] = useFont([font]);
-  const scale2 = useScale();
-
-  return {
-    ["& h1, h2, h3, h4, h5, h6"]: {
-      ...font2,
-      ...scale2,
-      lineHeight: lineHeight,
-    },
-  };
-};
-
-/**
- * Returns headings with different sizes.
- */
-const differentSizeHeadings = (settings: THeadingsSettings): object => {};
-
 const useHeadings = (
   preset: THeadingsPresetNames,
   settings: THeadingsSettings
 ): object => {
   switch (preset) {
     case "sameSize":
-      return sameSizeHeadings(settings);
+      return sameSize(settings);
     case "differentSizes":
-      return differentSizeHeadings(settings);
+      return differentSizes(settings);
   }
 };
 
