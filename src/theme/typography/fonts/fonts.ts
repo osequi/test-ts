@@ -8,7 +8,7 @@
 /**
  * Defines the available font names.
  */
-export type TFontNames = "Default";
+export type TFontNames = "Default" | "Nimbus Sans Regular";
 
 /**
  * Defines the font type.

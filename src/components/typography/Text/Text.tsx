@@ -41,20 +41,20 @@ const defaultProps: TText = {
  * Defines the styles.
  */
 const defaultText = (props: {
-  defaultFont: object;
+  nimbusRegular: object;
   defaultScale: object;
 }): object => ({
-  ...props.defaultFont,
+  ...props.nimbusRegular,
   ...props.defaultScale,
 });
 
 const bodyText = (props: {
-  defaultFont: object;
+  nimbusRegular: object;
   defaultScale: object;
   maxWidth: object;
   adjacentSpacing: object;
 }): object => ({
-  ...props.defaultFont,
+  ...props.nimbusRegular,
   ...props.defaultScale,
   ...props.maxWidth,
   ...props.adjacentSpacing,
@@ -79,7 +79,7 @@ const Text = (props: TText) => {
   /**
    * Prepares data.
    */
-  const [defaultFont] = useFonts(["Default"]);
+  const [nimbusRegular] = useFonts(["Nimbus Sans Regular"]);
   const defaultScale = useScale(0, preset);
   const maxWidth = useMaxWidth();
   const adjacentSpacing = useSpacing("Adjacent siblings margin top");
@@ -88,7 +88,7 @@ const Text = (props: TText) => {
    * Loads styles.
    */
   const [defaultTextKlass, bodyTextKlass] = useStyles([defaultText, bodyText], {
-    defaultFont: defaultFont,
+    nimbusRegular: nimbusRegular,
     defaultScale: defaultScale,
     maxWidth: maxWidth,
     adjacentSpacing: adjacentSpacing,
