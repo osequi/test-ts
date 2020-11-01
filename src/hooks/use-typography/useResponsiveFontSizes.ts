@@ -1,14 +1,12 @@
-import type { TTypographicGrid, TCssNotation, TBreakpoint } from "../../theme";
+import type { TCssNotation } from "../../theme";
+import { typography, breakpoints } from "../../theme";
 import { useBreakpoint } from "../";
 
 /**
  * Creates the media queries for the responsive font sizes.
  */
-const useResponsiveFontSizes = (
-  grid: TTypographicGrid,
-  breakpoints: TBreakpoint[],
-  notation: TCssNotation
-): string | object => {
+const useResponsiveFontSizes = (notation: TCssNotation): string | object => {
+  const { grid } = typography;
   const { fontSizes } = grid;
 
   const fontSizesWithoutTheDefaultFontSize = fontSizes.slice(1);
@@ -19,7 +17,7 @@ const useResponsiveFontSizes = (
         fontSizesWithoutTheDefaultFontSize &&
         fontSizesWithoutTheDefaultFontSize.reduce((result, item, index) => {
           const breakpoint = breakpoints[index];
-          const query = useBreakpoint(breakpoint.name, breakpoints);
+          const query = useBreakpoint(breakpoint.name);
           return `${result} ${query} {body {font-size: ${item}%;}}`;
         }, "")
       );
@@ -29,7 +27,7 @@ const useResponsiveFontSizes = (
         fontSizesWithoutTheDefaultFontSize &&
         fontSizesWithoutTheDefaultFontSize.map((item, index) => {
           const breakpoint = breakpoints[index];
-          const query = useBreakpoint(breakpoint.name, breakpoints);
+          const query = useBreakpoint(breakpoint.name);
           responsiveSizes[`${query}`] = { fontSize: `${item}%` };
         })
       );

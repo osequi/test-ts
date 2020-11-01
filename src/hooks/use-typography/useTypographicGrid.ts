@@ -1,20 +1,14 @@
-import type { TTypographicGrid, TCssNotation, TBreakpoint } from "../../theme";
+import type { TCssNotation } from "../../theme";
+import { typography } from "../../theme";
 import { useLem, useResponsiveFontSizes } from "./";
 
-const useTypographicGrid = (
-  grid: TTypographicGrid,
-  breakpoints: TBreakpoint[],
-  notation: TCssNotation
-): string | object => {
+const useTypographicGrid = (notation: TCssNotation): string | object => {
+  const { grid } = typography;
   const { fontSizes, lineHeight } = grid;
   const fontSize = fontSizes[0];
 
-  const lem = useLem(grid);
-  const responsiveFontSizes = useResponsiveFontSizes(
-    grid,
-    breakpoints,
-    notation
-  );
+  const lem = useLem();
+  const responsiveFontSizes = useResponsiveFontSizes(notation);
 
   const css = `
   	body {
