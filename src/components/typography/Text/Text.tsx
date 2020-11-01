@@ -40,7 +40,10 @@ const defaultProps: TText = {
 /**
  * Defines the styles.
  */
-const defaultText = (props: { defaultFont: object; defaultScale: object }) => ({
+const defaultText = (props: {
+  defaultFont: object;
+  defaultScale: object;
+}): object => ({
   ...props.defaultFont,
   ...props.defaultScale,
 });
@@ -50,7 +53,7 @@ const bodyText = (props: {
   defaultScale: object;
   maxWidth: object;
   adjacentSpacing: object;
-}) => ({
+}): object => ({
   ...props.defaultFont,
   ...props.defaultScale,
   ...props.maxWidth,
@@ -85,15 +88,12 @@ const Text = (props: TText) => {
   /**
    * Loads styles.
    */
-  const { defaultTextKlass, bodyTextKlass } = useStyles(
-    [defaultText, bodyText],
-    {
-      defaultFont: defaultFont,
-      defaultScale: defaultScale,
-      maxWidth: maxWidth,
-      adjacentSpacing: adjacentSpacing,
-    }
-  );
+  const [defaultTextKlass, bodyTextKlass] = useStyles([defaultText, bodyText], {
+    defaultFont: defaultFont,
+    defaultScale: defaultScale,
+    maxWidth: maxWidth,
+    adjacentSpacing: adjacentSpacing,
+  });
 
   /**
    * Matches styles with the variants.
