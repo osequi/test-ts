@@ -12,6 +12,14 @@ export type TScaleNames = "linear" | "modular";
 export type TScaleSettings = TLinearScaleSettings & TModularScaleSettings;
 
 /**
+ * Defines the scale type.
+ */
+export type TScale = {
+  preset: TScaleNames;
+  settings: TScaleSettings;
+};
+
+/**
  * Returns a value from a scale.
  */
 const scaleValue = (
