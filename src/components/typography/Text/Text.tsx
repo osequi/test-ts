@@ -8,7 +8,7 @@ import { startCase } from "lodash";
 import {
   useStyles,
   useTheme,
-  useFont,
+  useFonts,
   useMaxWidth,
   useScale,
   useSpacing,
@@ -72,7 +72,6 @@ const Text = (props: TText) => {
   const theme = useTheme();
   const {
     typography: {
-      fonts,
       scale: { preset },
     },
   } = theme;
@@ -80,7 +79,7 @@ const Text = (props: TText) => {
   /**
    * Prepares data.
    */
-  const defaultFont = useFont("Default", fonts);
+  const [defaultFont] = useFonts(["Default"]);
   const defaultScale = useScale(0, preset);
   const maxWidth = useMaxWidth();
   const adjacentSpacing = useSpacing("Adjacent siblings margin top");

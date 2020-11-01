@@ -1,5 +1,5 @@
 import type { TFontNames } from "../../theme";
-import { useFont, useScale } from "../";
+import { useFonts, useScale } from "../";
 
 export type THeadingsPresetNames = "sameSize" | "differentSizes";
 
@@ -15,7 +15,7 @@ export type THeadingsSettings = {
 const sameSizeHeadings = (settings: THeadingsSettings): object => {
   const { font, lineHeight, scale } = settings;
 
-  const font2 = useFont(font);
+  const [font2] = useFonts([font]);
   const scale2 = useScale();
 
   return {

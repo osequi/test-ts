@@ -2,7 +2,7 @@ export { useStyles } from "./use-styles/";
 export { useTheme } from "./use-theme";
 export { useColorContrast, useColorValue, useColorTune } from "./use-colors";
 export { useBreakpoint } from "./use-breakpoint";
-export { useFont } from "./use-font";
+export { useFonts } from "./use-fonts";
 export {
   useLem,
   useMaxWidth,

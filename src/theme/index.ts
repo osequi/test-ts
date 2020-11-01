@@ -7,6 +7,7 @@ export type {
   TTypographicScaleSettingsForLinear,
   TTypographicScaleSettingsForModular,
 } from "./typography";
+export { typography } from "./typography";
 
 export type { TBreakpoint, TBreakpointNames } from "./breakpoints";
 export { breakpoints } from "./breakpoints";
