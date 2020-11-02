@@ -13,21 +13,42 @@ export type THeadingsSettings = {
   font?: TFontNames;
   lineHeight?: number;
   scale?: number;
+  scales?: number[];
 };
 
 /**
- * Resizes and styles headings according to a preset.
+ * Defines the headings type.
  */
-const useHeadings = (
-  preset: THeadingsPresetNames,
-  settings: THeadingsSettings
-): object => {
+export type THeadings = {
+  preset?: THeadingsPresetNames;
+  settings?: THeadingsSettings;
+};
+
+/**
+ * Returns a heading style.
+ */
+const getHeading = (heading: THeadings): object => {
+  const { preset, settings } = heading;
+
   switch (preset) {
     case "sameSize":
       return sameSize(settings);
     case "differentSizes":
       return differentSizes(settings);
   }
+};
+
+/**
+ * Resizes and styles headings according to a preset.
+ * Returns either a single headings or an array of headings.
+ */
+const useHeadings = (headings: THeadings[] | THeadings): object[] | object => {
+  return Array.isArray(headings)
+    ? headings &&
+        headings.reduce((result, heading) => {
+          return [...result, getHeading(heading)];
+        }, [])
+    : getHeading(headings);
 };
 
 export default useHeadings;

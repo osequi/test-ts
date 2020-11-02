@@ -1,5 +1,6 @@
 import type { TLinearScaleSettings, TModularScaleSettings } from "./";
 import { linearScaleValue, modularScaleValue } from "./";
+import { useTheme } from "../";
 
 /**
  * Defines the available scales.
@@ -26,11 +27,28 @@ export type TScaleValue = TScale & {
   value: number;
 };
 
+const defaultProps = () => {
+  const theme = useTheme();
+
+  const preset = theme?.typography?.scale?.preset
+    ? theme.typography.scale.preset
+    : "linear";
+  const settings = theme?.typography?.scale?.settings
+    ? theme.typography.scale.settings
+    : {};
+
+  return {
+    value: 0,
+    preset: preset,
+    settings: settings,
+  };
+};
+
 /**
  * Returns a value from a scale.
  */
 const scaleValue = (scale: TScaleValue): number => {
-  const { value, preset, settings } = scale;
+  const { value, preset, settings } = { ...defaultProps, ...scale };
 
   switch (preset) {
     case "linear":

@@ -55,11 +55,13 @@ const bodyText = (props: {
   defaultScale: object;
   maxWidth: object;
   adjacentSpacing: object;
+  differentSizeHeadings: object;
 }): object => ({
   ...props.nimbusRegular,
   ...props.defaultScale,
   ...props.maxWidth,
   ...props.adjacentSpacing,
+  ...props.differentSizeHeadings,
 });
 
 /**
@@ -75,11 +77,24 @@ const Text = (props: TText) => {
   const defaultScale = useScale({ value: 1, preset: "linear" });
   const maxWidth = useMaxWidth();
   const adjacentSpacing = useSpacing("Adjacent siblings margin top");
-  const sameSizeHeadings = useHeadings("sameSize", {
-    font: "Nimbus Sans Regular",
-    lineHeight: 1,
-    scale: 3,
-  });
+  const [sameSizeHeadings, differentSizeHeadings] = useHeadings([
+    {
+      preset: "sameSize",
+      settings: {
+        font: "Nimbus Sans Medium",
+        lineHeight: 1,
+        scale: 3,
+      },
+    },
+    {
+      preset: "differentSizes",
+      settings: {
+        font: "Nimbus Sans Medium",
+        lineHeight: 1,
+        scale: 3,
+      },
+    },
+  ]);
 
   /**
    * Loads styles.
@@ -90,6 +105,7 @@ const Text = (props: TText) => {
     maxWidth: maxWidth,
     adjacentSpacing: adjacentSpacing,
     sameSizeHeadings: sameSizeHeadings,
+    differentSizeHeadings: differentSizeHeadings,
   });
 
   /**
