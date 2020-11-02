@@ -1,11 +1,5 @@
 import { useStyles } from ".";
 
-const style1 = (props) => {
-  return {
-    backgroundColor: "red",
-  };
-};
-
 const style2 = {
   backgroundColor: "red",
 };

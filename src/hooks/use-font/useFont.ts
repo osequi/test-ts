@@ -27,9 +27,13 @@ const getFont = (name: TFontNames, fonts: TFont[]): TFont => {
  * @example useFont(["Deafult", 'Nimbus Sans Medium']) => [{ fontFamily: "inherit", fontWeight: 'inherit', fontStyle: "inherit"}, { fontFamily: "nimbus-sans", fontWeight: 500, fontStyle: "normal"}]
  */
 const useFont = (names: TFontNames[] | TFontNames): TFont[] | TFont => {
-  // NOTE: Types during destructuring can lost. This is a known bug.
-  // @see https://stackoverflow.com/questions/39672807/types-in-object-destructuring
-  const { fonts } = typography;
+  /**
+   * This is a workaround for a TS destructuring problem.
+   * @see https://github.com/osequi/hacks/blob/master/TS.md#destructuring
+   */
+  const fonts = typography.fonts.reduce((result, item) => {
+    return [...result, item];
+  }, []);
 
   return Array.isArray(names)
     ? names &&
