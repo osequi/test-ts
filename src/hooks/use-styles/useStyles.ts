@@ -1,34 +1,46 @@
 import { css } from "emotion";
 
 /**
- * Transforms CSS style functions, and, style objects with labels, into classNames for Emotion.
- * @example: `const [styleFunctionKlass, styleObjectWithLabelKlass ] = useStyles([styleFunction, styleObjectWithLabel], props)`
+ * Tranforms a style object / function with Emotion's `css()` function.
  */
-const useStyles = (styles = [], props = {}) => {
-  return (
-    styles &&
-    styles.reduce((result, item) => {
-      /**
-       * Checks if this is a style object or function.
-       */
-      const isFunction = item && item.name;
-      /**
-       * Checks if this is a style object with a label.
-       */
-      const isObjectWithLabel = item && item.label;
-      /**
-       * Logs a warning message if a style object without a label is passed.
-       */
-      if (!isFunction && !isObjectWithLabel) {
-        console.log("A style object without label was received:", item);
-      }
-      /**
-       * Returns value both for style functions and objects.
-       */
-      const value = isFunction ? css(item(props)) : css(item);
-      return [...result, value];
-    }, [])
-  );
+const transformStyle = (style, props: {}) => {
+  /**
+   * Checks if this is a style object or function.
+   */
+  const isFunction = style && style.name;
+  /**
+   * Checks if this is a style object with a label.
+   */
+  const isObjectWithLabel = style && style.label;
+  /**
+   * Logs a warning message if a style object without a label is passed.
+   */
+  if (!isFunction && !isObjectWithLabel) {
+    // NOTE: Remove in production.
+    console.log("A style object without label was received:", style);
+  }
+  /**
+   * Returns value both for style functions and objects.
+   */
+  return isFunction ? css(style(props)) : css(style);
+};
+
+/**
+ * Transforms CSS style functions, and, style objects with labels, into classNames for Emotion.
+ * @example `const klass = useStyles(styleFunction, props)`
+ * @example `const [klass1, klass2] = useStyles([styleFunction, styleObject], props)`
+ * @see useStyles.md
+ */
+const useStyles = (styles?: [] | {}, props?: {}) => {
+  const styles2 = styles ? styles : {};
+  const props2 = props ? props : {};
+
+  return Array.isArray(styles2)
+    ? styles2 &&
+        styles2.reduce((result, item) => {
+          return [...result, transformStyle(item, props2)];
+        }, [])
+    : transformStyle(styles2, props2);
 };
 
 export default useStyles;

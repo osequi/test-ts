@@ -19,3 +19,9 @@
 - It would be nice to save hard work into presets.
 - That way large chunks of code can be reused. Like a complete typographic settings from a project where weeks were spent on fine tunings.
 - Presets enable experimenting. Color schemes saved into presets can drive later decisions.
+
+### Default values
+
+### Tests
+
+- Typescript reduces the number of tests by warning early on incorect params.

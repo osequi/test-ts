@@ -28,7 +28,7 @@ const getFont = (name: TFontNames, fonts: TFont[]): TFont => {
  */
 const useFont = (names: TFontNames[] | TFontNames): TFont[] | TFont => {
   /**
-   * This is a workaround for a TS destructuring problem.
+   * // NOTE: This is a workaround for a TS destructuring problem.
    * @see https://github.com/osequi/hacks/blob/master/TS.md#destructuring
    */
   const fonts = typography.fonts.reduce((result, item) => {

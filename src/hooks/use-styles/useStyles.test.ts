@@ -9,14 +9,26 @@ const style3 = {
   backgroundColor: "red",
 };
 
+it("Works with a simple argument", () => {
+  expect(useStyles(style2)).not.toBeNull();
+});
+
+it("Works with an array argument", () => {
+  expect(useStyles([style2])).not.toBeNull();
+});
+
+it("Returns multiple results", () => {
+  expect(useStyles([style2, style3], {})).toHaveLength(2);
+});
+
 it("It works fine when a style object with a `label` is passed.", () => {
-  expect(JSON.stringify(useStyles([style3]))).not.toBeNull();
+  expect(useStyles([style3])).not.toBeNull();
 });
 
 it("Falls back silently on a style object without `label`.", () => {
-  expect(JSON.stringify(useStyles([style2]))).not.toBeNull();
+  expect(useStyles([style2])).not.toBeNull();
 });
 
 it("Falls back silently when there are not enough arguments", () => {
-  expect(useStyles()).toStrictEqual([]);
+  expect(useStyles()).not.toBeNull();
 });
