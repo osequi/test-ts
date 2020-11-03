@@ -10,8 +10,8 @@ export type THeadingsPresetNames = "sameSize" | "differentSizes";
  * Defines the headings settings type.
  */
 export type THeadingsSettings = {
-  font?: TFontNames;
-  lineHeight?: number;
+  font: TFontNames;
+  lineHeight: number;
   scale?: number;
   scales?: number[];
 };
@@ -20,8 +20,8 @@ export type THeadingsSettings = {
  * Defines the headings type.
  */
 export type THeadings = {
-  preset?: THeadingsPresetNames;
-  settings?: THeadingsSettings;
+  preset: THeadingsPresetNames;
+  settings: THeadingsSettings;
 };
 
 /**
@@ -40,7 +40,7 @@ const getHeading = (heading: THeadings): object => {
 
 /**
  * Resizes and styles headings according to a preset.
- * Returns either a single headings or an array of headings.
+ * Returns either a single set of headings or an array of headings.
  */
 const useHeadings = (headings: THeadings[] | THeadings): object[] | object => {
   return Array.isArray(headings)

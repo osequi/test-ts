@@ -16,7 +16,7 @@ export type TScaleSettings = TLinearScaleSettings & TModularScaleSettings;
  * Defines the scale type.
  */
 export type TScale = {
-  preset?: TScaleNames;
+  preset: TScaleNames;
   settings?: TScaleSettings;
 };
 

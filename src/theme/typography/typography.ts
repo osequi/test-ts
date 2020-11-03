@@ -1,5 +1,4 @@
-import type { TTypographicGrid, TFont } from "./";
-import type { TScale } from "../../hooks/use-scale";
+import type { TTypographicGrid, TFont, TScale } from "./";
 import { defaultFont } from "./";
 
 /**
@@ -7,8 +6,8 @@ import { defaultFont } from "./";
  */
 export type TTypography = {
   grid: TTypographicGrid;
-  fonts: TFont[];
   scale?: TScale;
+  fonts: TFont[];
 };
 
 /**
@@ -16,6 +15,13 @@ export type TTypography = {
  */
 export const typography = {
   grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
+  scale: {
+    preset: "modular",
+    settings: {
+      base: [1],
+      ratio: 1.25,
+    },
+  },
   fonts: [
     defaultFont,
     {
@@ -47,11 +53,4 @@ export const typography = {
       letterSpacing: "1.25px",
     },
   ],
-  scale: {
-    preset: "modular",
-    settings: {
-      base: [1],
-      ratio: 1.25,
-    },
-  },
 };

@@ -1,4 +1,4 @@
-export type { TTypographicGrid, TFont, TFontNames } from "./typography";
+export type { TTypographicGrid, TFont, TFontNames, TScale } from "./typography";
 export { typography } from "./typography";
 
 export type { TBreakpoint, TBreakpointNames } from "./breakpoints";

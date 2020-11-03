@@ -12,16 +12,16 @@ const defaultProps = {
  * Sets the max-width of a text to display 50-60 characters in a row.
  */
 const useMaxWidth = (props?: TMaxWidth): object => {
-  const { value, exceptions } = props || defaultProps;
+  const { value, exceptions } = { ...defaultProps, ...props };
 
-  const r = {
+  const jss = {
     [`& > *${exceptions}`]: {
       maxWidth: `calc(${value} * var(--lem))`,
     },
   };
 
   return {
-    ...r,
+    ...jss,
   };
 };
 

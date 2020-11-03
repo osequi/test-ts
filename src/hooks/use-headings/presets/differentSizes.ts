@@ -1,25 +1,42 @@
-import type { THeadingsSettings } from "../";
+import type { TFontNames, TScale } from "../../../theme";
+import { typography } from "../../../theme";
 import { useFont, useScale } from "../../";
+
+export type THeadingsDifferentSizes = {
+  font: TFontNames;
+  lineHeight: number;
+  scale: TScale;
+  scaleValues: number[];
+};
 
 const defaultProps = {
   font: "Default",
   lineHeight: 1,
-  scales: [1, 2, 3, 4, 5, 6],
+  scale: typography.scale,
+  scaleValues: [1, 2, 3, 4, 5, 6],
 };
 
 /**
  * Returns headings with different sizes.
  */
-const differentSizes = (settings: THeadingsSettings): object => {
-  const { font, lineHeight, scales } = { ...defaultProps, ...settings };
+const differentSizes = (sizes: THeadingsDifferentSizes): object => {
+  const { font, lineHeight, scale, scaleValues } = {
+    ...defaultProps,
+    ...sizes,
+  };
 
   const font2 = useFont(font);
-  const scales2 =
-    scales &&
-    scales.map((item) => {
+
+  const { preset, settings } = scale;
+
+  const scalesValues2 =
+    scaleValues &&
+    scaleValues.map((item) => {
       return { value: item };
     });
-  const scales3 = useScale(scales2);
+
+  const scales3 = useScale(scalesValues2);
+
   console.log("scales3:", scales3);
 
   return {

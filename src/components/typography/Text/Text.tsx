@@ -91,7 +91,7 @@ const Text = (props: TText) => {
       settings: {
         font: "Nimbus Sans Medium",
         lineHeight: 1,
-        scale: 3,
+        scales: [3],
       },
     },
   ]);

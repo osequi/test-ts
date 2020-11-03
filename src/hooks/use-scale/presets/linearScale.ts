@@ -1,4 +1,4 @@
-import { useTheme } from "../../";
+import { typography } from "../../../theme";
 
 /**
  * Defines the settings for the linear scale.
@@ -17,13 +17,9 @@ const linearScaleValue = (
   value: number,
   settings?: TLinearScaleSettings
 ): number => {
-  const theme = useTheme();
-
   const {
-    typography: {
-      grid: { lineHeight: lineHeightFromTheme },
-    },
-  } = theme;
+    grid: { lineHeight: lineHeightFromTheme },
+  } = typography;
 
   const lineHeightFromSettings = settings
     ? settings.lineHeight
